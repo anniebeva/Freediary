@@ -9,7 +9,7 @@ It is designed as a personal tool for tracking trainings and exercises, and also
 
 Currently, Freediary allows you to:
 
-- Add and edit trainings of different types: **Pool**, **Gym**, **Depth**
+- Add and edit trainings of different types: **Pool**, **Gym**, **Depth**, **Other**
 - Add exercises associated with each training
 - Filter trainings by type
 - Track training details like difficulty, notes, and type-specific fields
