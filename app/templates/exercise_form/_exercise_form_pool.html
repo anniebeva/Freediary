@@ -1,0 +1,17 @@
+<div class="mb-3">
+    <label for="distance" class="form-label">Distance:</label>
+    <input type="number" class="form-control" id="distance" name="distance"
+           value="{{ draft.distance if draft else exercise.distance if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="interval" class="form-label">Interval:</label>
+    <input type="text" class="form-control" id="interval" name="interval"
+           value="{{ draft.interval if draft else exercise.interval if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="reps" class="form-label">Reps:</label>
+    <input type="number" class="form-control" id="reps" name="reps"
+           value="{{ draft.reps if draft else exercise.reps if exercise else '' }}">
+</div>

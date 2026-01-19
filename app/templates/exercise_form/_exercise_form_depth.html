@@ -1,0 +1,17 @@
+<div class="mb-3">
+    <label for="depth" class="form-label">Depth (m):</label>
+    <input type="number" class="form-control" id="depth" name="depth"
+           value="{{ draft.depth if draft else exercise.depth if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="dive_time" class="form-label">Dive Time:</label>
+    <input type="text" class="form-control" id="dive_time" name="dive_time"
+           value="{{ draft.dive_time if draft else exercise.dive_time if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="rest_time" class="form-label">Rest Time:</label>
+    <input type="text" class="form-control" id="rest_time" name="rest_time"
+           value="{{ draft.rest_time if draft else exercise.rest_time if exercise else '' }}">
+</div>

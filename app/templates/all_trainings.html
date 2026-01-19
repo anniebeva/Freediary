@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}All Trainings{% endblock %}
+
+
+{% block header_content %}
+
+<form method="GET"
+      action="{{ url_for('show_all_trainings') }}"
+      class="header-filter d-flex align-items-center ms-3">
+    <!-- Filter trainings -->
+    <select name="training_type" class="form-select form-select-sm" onchange="this.form.submit()">
+        <option value="">All</option>
+        <option value="pool"
+            {% if selected_type == 'pool' %}selected{% endif %}>
+            Pool
+        </option>
+        <option value="gym"
+            {% if selected_type == 'gym' %}selected{% endif %}>
+            Gym
+        </option>
+        <option value="depth"
+            {% if selected_type == 'depth' %}selected{% endif %}>
+            Depth
+        </option>
+        <option value="other"
+            {% if selected_type == 'other' %}selected{% endif %}>
+            Other
+        </option>
+
+    </select>
+</form>
+{% endblock %}
+
+{% block content %}
+<!-- Trainings display -->
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Trainings</h1>
+
+    <div class="d-flex flex-column gap-3">
+        {% if not_found %}
+            <p class="text-danger mt-3">
+                No training found for this date
+            </p>
+        {% endif %}
+
+        {% for training in trainings %}
+        <div class="card training-card">
+            <div class="card-body d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="fw-semibold fs-5">
+                        {{ training.date.strftime('%d %B %Y') }}
+                    </div>
+                    <span class="badge
+                        {% if training.training_type == 'pool' %}bg-info
+                        {% elif training.training_type == 'gym' %}bg-warning
+                        {% elif training.training_type == 'depth' %}bg-primary
+                        {% else %}bg-secondary
+                        {% endif %}">
+                        {{ training.training_type|capitalize }}
+                    </span>
+                    <span class="badge
+                        {% if training.difficulty == 'easy' %}bg-success
+                        {% elif training.difficulty == 'medium' %}bg-primary
+                        {% elif training.difficulty == 'hard' %}bg-danger
+                        {% else %}bg-secondary
+                        {% endif %}">
+                        {{ training.difficulty|capitalize }}
+                    </span>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('show_training', id=training.id) }}" class="btn btn-outline-primary btn-md">View</a>
+                    <a href="{{ url_for('edit_training', id=training.id) }}" class="btn btn-outline-secondary btn-md">Edit</a>
+                    <a href="{{ url_for('delete_training', id=training.id) }}" class="btn btn-outline-danger btn-md" onclick="return confirm('Are you sure?')">Delete</a>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

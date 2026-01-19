@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %} Training {{ training.date.strftime('%d %B %Y') }} {% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h4 class="card-title text-center mb-4">Training {{ training.date.strftime('%d %B %Y') }}</h4>
+
+    <div class="card shadow-lg training-info-card">
+        <div class="card-body pt-5 px-5 pb-5">
+
+            <div class="row">
+                <!-- Training Information -->
+                <div class="col-md-5 ps-5 pe-3 border-end">
+                    <p><strong>Date: </strong>{{ training.date.strftime('%d %B %Y') }}</p>
+                    <p><strong>Type: </strong>{{ training.training_type|capitalize }}</p>
+                    <p><strong>Difficulty: </strong>{{ training.difficulty|capitalize }}</p>
+
+                    {% if training.notes %}
+                        <p><strong>Notes: </strong><br>{{ training.notes }}</p>
+                    {% endif %}
+
+                    {% if training.training_type %}
+                        {% include 'training_info_templates/_training_info_' ~ training.training_type ~ '.html' %}
+                    {% endif %}
+                </div>
+
+                <!-- Exercises -->
+                <div class="col-md-7 pe-4">
+                    {% if training.exercises %}
+                        <div class="d-flex flex-column gap-0.5">
+                            {% for ex in training.exercises %}
+                                {% include 'training_info_templates/_exercise_info.html' %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted">No exercises added.</p>
+                    {% endif %}
+
+                    <!-- Add new exercise btn -->
+                    <a href="{{ url_for('add_exercise', training_id=training.id, next=request.full_path) }}"
+                       class="btn btn-outline-primary btn-sm w-100 mb-3 add-exercise-btn">
+                        <i class="bi bi-plus-lg me-1"></i> Add new exercise
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training menu: edit, delete, return -->
+    <div class="d-flex justify-content-center gap-3 mt-4">
+        <a href="{{ url_for('show_all_trainings') }}" class="btn btn-outline-primary">Back</a>
+        <a href="{{ url_for('edit_training', id=training.id) }}" class="btn btn-outline-warning">Edit</a>
+        <a href="{{ url_for('delete_training', id=training.id) }}"
+           class="btn btn-outline-danger"
+           onclick="return confirm('Are you sure?')">Delete</a>
+    </div>
+</div>
+{% endblock %}
+
+

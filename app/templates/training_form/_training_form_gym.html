@@ -1,0 +1,32 @@
+<div class="mb-3">
+    <label class="form-label">Duration</label>
+    <input type="text" class="form-control"
+           name="duration"
+           value="{{ training_draft.get('duration', '') if training_draft else training.duration }}">
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Calories</label>
+    <input type="text" class="form-control"
+           name="kcal"
+           value="{{ training_draft.get('kcal', '') if training_draft else training.kcal }}">
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Average heart rate</label>
+    <input type="number" class="form-control"
+           name="avg_heartrate"
+           value="{{ training_draft.get('avg_heartrate', '') if training_draft else training.avg_heartrate }}">
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Max heart rate</label>
+    <input type="number" class="form-control"
+           name="max_heartrate"
+           value="{{ training_draft.get('max_heartrate', '') if training_draft else training.max_heartrate }}">
+</div>
+
+
+
+
+

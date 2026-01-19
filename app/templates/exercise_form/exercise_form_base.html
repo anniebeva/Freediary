@@ -1,0 +1,29 @@
+<form method="POST" class="w-50 mx-auto mt-4">
+    <input type="hidden" name="next" value="{{ request.args.get('next') }}">
+
+    <div class="mb-3">
+        <label for="ex_name" class="form-label">Exercise Name:</label>
+        <input type="text" class="form-control"
+               id="ex_name"
+               name="ex_name"
+               value="{{ draft.ex_name if draft else exercise.ex_name if exercise else '' }}"
+               required>
+    </div>
+
+    {% if training_type == 'pool' %}
+        {% include 'exercise_form/_exercise_form_pool.html' %}
+    {% elif training_type == 'gym' %}
+        {% include 'exercise_form/_exercise_form_gym.html' %}
+    {% elif training_type == 'depth' %}
+        {% include 'exercise_form/_exercise_form_depth.html' %}
+    {% endif %}
+
+    <div class="mb-3">
+        <label for="notes" class="form-label">Notes:</label>
+        <textarea class="form-control" id="notes" name="notes" rows="2">{{ draft.notes if draft else exercise.notes if exercise else '' }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary">
+        {{ 'Add Exercise' if not exercise else 'Save Changes' }}
+    </button>
+</form>

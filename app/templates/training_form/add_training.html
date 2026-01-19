@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Training{% endblock %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('add_training', training_type=training_type) }}" class="w-50 mx-auto mt-4">
+    <input type="hidden" name="next" value="{{ request.args.get('next') }}">
+
+    {% include 'training_form/training_form_base.html' %}
+
+    <button type="submit" name="add_exercise" class="btn btn-outline-secondary">Add exercise</button>
+    <button type="submit" name="submit_training" class="btn btn-outline-primary">Save Training</button>
+</form>
+{% endblock %}
+

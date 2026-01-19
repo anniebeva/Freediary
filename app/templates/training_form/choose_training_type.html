@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Choose Training Type{% endblock %}
+
+{% block content %}
+<!-- Page to select training type -->
+<h3 class="text-center mt-4">Select Training Type</h3>
+<form method="POST" class="w-50 mx-auto mt-4">
+    <select name="type" class="form-select mb-3">
+        <option value="pool">Pool</option>
+        <option value="gym">Gym</option>
+        <option value="depth">Depth</option>
+        <option value="other">Other</option>
+    </select>
+    <button type="submit" class="btn btn-outline-primary">Next</button>
+</form>
+{% endblock %}

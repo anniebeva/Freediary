@@ -1,0 +1,36 @@
+<div class="mb-3">
+    <label for="location" class="form-label">Location:</label>
+    <input type="text" class="form-control"
+           id="location"
+           name="location"
+           value="{{ training_draft.get('location', '') if training_draft else training.location }}">
+</div>
+
+<div class="mb-3">
+    <label for="temperature" class="form-label">Water Temperature (C):</label>
+    <input type="number" class="form-control"
+           id="temperature"
+           name="temperature"
+           min="0"
+           value="{{ training_draft.get('temperature', '') if training_draft else training.temperature }}">
+</div>
+
+<div class="mb-3">
+    <label for="wetsuit" class="form-label">Wetsuit (mm):</label>
+    <input type="text" class="form-control"
+           id="wetsuit"
+           name="wetsuit"
+           min="0"
+           value="{{ training_draft.get('wetsuit', '') if training_draft else training.wetsuit }}">
+</div>
+
+<div class="mb-3">
+    <label for="weights_free" class="form-label">Weights (kg):</label>
+    <input type="number" class="form-control"
+           id="weights_free"
+           name="weights_free"
+           min="0"
+           value="{{ training_draft.get('weights_free', '') if training_draft else training.weights_free }}">
+</div>
+
+

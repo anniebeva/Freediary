@@ -1,0 +1,24 @@
+<div class="mb-3">
+    <label for="weight" class="form-label">Weight (kg):</label>
+    <input type="number" class="form-control" id="weight" name="weight"
+           value="{{ draft.weight if draft else exercise.weight if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="reps" class="form-label">Reps:</label>
+    <input type="number" class="form-control" id="reps" name="reps"
+           value="{{ draft.reps if draft else exercise.reps if exercise else '' }}">
+</div>
+
+<div class="mb-3">
+    <label for="sets" class="form-label">Sets:</label>
+    <input type="number" class="form-control" id="sets" name="sets"
+           value="{{ draft.sets if draft else exercise.sets if exercise else '' }}">
+</div>
+
+
+<div class="mb-3">
+    <label for="rest_time" class="form-label">Rest Time:</label>
+    <input type="text" class="form-control" id="rest_time" name="rest_time"
+           value="{{ draft.rest_time if draft else exercise.rest_time if exercise else '' }}">
+</div>

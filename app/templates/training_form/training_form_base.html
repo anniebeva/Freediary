@@ -1,0 +1,74 @@
+
+<!-- Date -->
+<div class="mb-3">
+    <label for="date" class="form-label">Date:</label>
+    <input type="date" class="form-control" id="date" name="date"
+           value="{% if training_draft %}{{ training_draft.date }}{% elif training %}{{ training.date }}{% endif %}">
+</div>
+
+<!-- Difficulty -->
+<div class="mb-3">
+    <label for="difficulty" class="form-label">Difficulty:</label>
+    <select class="form-select" id="difficulty" name="difficulty" required>
+        <option {% if training_draft and training_draft.difficulty == 'Easy' %}selected{% elif training and training.difficulty == 'Easy' %}selected{% endif %}>Easy</option>
+        <option {% if training_draft and training_draft.difficulty == 'Medium' %}selected{% elif training and training.difficulty == 'Medium' %}selected{% endif %}>Medium</option>
+        <option {% if training_draft and training_draft.difficulty == 'Hard' %}selected{% elif training and training.difficulty == 'Hard' %}selected{% endif %}>Hard</option>
+    </select>
+</div>
+
+<!-- Notes -->
+<div class="mb-3">
+    <label for="notes" class="form-label">Notes:</label>
+    <textarea class="form-control" id="notes" name="notes" rows="3">{% if training_draft %}{{ training_draft.notes }}{% elif training %}{{ training.notes }}{% endif %}</textarea>
+</div>
+
+<!-- Type-specific fields -->
+{% if training_type == 'pool' %}
+    {% include 'training_form/_training_form_pool.html' %}
+{% elif training_type == 'gym' %}
+    {% include 'training_form/_training_form_gym.html' %}
+{% elif training_type == 'depth' %}
+    {% include 'training_form/_training_form_depth.html' %}
+{% endif %}
+
+<!-- Exercises -->
+<h5 class="mt-4">Exercises added:</h5>
+{% set exercises_list = exercise_draft if exercise_draft else exercises if exercises else [] %}
+{% if exercises_list %}
+    <ul class="list-group mb-3">
+        {% for ex in exercises_list %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>{{ ex.ex_name }}</strong>
+                {% for key, val in ex.items() if key != 'ex_name' and val %}
+                    | {{ key|capitalize }}: {{ val }}
+                {% endfor %}
+            </div>
+            <div class="btn-group btn-group-sm">
+                {% if not training %}
+    <!-- Draft mode -->
+    <a href="{{ url_for('edit_draft_exercise', index=loop.index0, training_type=training_type, next=request.full_path) }}" class="btn btn-outline-warning">
+        <i class="bi bi-pencil"></i>
+    </a>
+    <a href="{{ url_for('delete_draft_exercise', index=loop.index0, next=request.path) }}"
+       class="btn btn-outline-danger"
+       onclick="return confirm('Are you sure?')">
+        <i class="bi bi-trash"></i>
+    </a>
+    {% else %}
+        <!-- Existing training in DB -->
+        <a href="{{ url_for('edit_exercise', exercise_id=ex.id, next=request.full_path) }}" class="btn btn-outline-warning">
+            <i class="bi bi-pencil"></i>
+        </a>
+        <a href="{{ url_for('delete_exercise', exercise_id=ex.id, next=request.full_path) }}" class="btn btn-outline-danger"
+           onclick="return confirm('Are you sure?')">
+            <i class="bi bi-trash"></i>
+        </a>
+    {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No exercises added yet.</p>
+{% endif %}

@@ -1,0 +1,110 @@
+
+/*Стили для home page*/
+
+.header-filter select {
+    border: 1px solid transparent;
+    box-shadow: 0 0 5px #d9e3f1 !important;
+    background-color: transparent;
+    color: #d9e3f1;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    min-width: 110px;
+    appearance: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+.header-filter select option {
+    background-color: #d9e3f1;
+    color: #575b60;
+}
+
+
+.training-card {
+    border-radius: 1rem;
+    transition: all 0.2s ease-in-out;
+    padding: 0.75rem 1rem;
+    cursor: default;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.training-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.btn-md {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Стили для страницы training info*/
+
+/* Контейнер detail page */
+.training-info-card {
+    max-width: 800px;         /* ограничиваем ширину */
+    width: 100%;              /* чтобы карточка растягивалась до max-width */
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: #ffffff; /* белая карточка для видимой тени */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Центрируем текст в карточке */
+.training-info-card .card-body {
+    padding: 4rem 3rem 3rem;
+}
+
+.training-info-card p {
+    margin-bottom: 0.75rem;
+}
+
+/* Hover для кнопок */
+.training-info-page .btn-md {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.training-info-page .btn-md:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
+    z-index: 10; /* чтобы тень не скрывалась */
+}
+
+/*Карточка упражнения*/
+
+.exercise-card .btn-group {
+    align: left;
+}
+
+.exercise-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.exercise-card strong {
+    font-weight: 600;
+}
+
+.add-exercise-btn {
+    height: 46px;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+
+    display: flex;
+    align-items: center;      /* вертикально */
+    justify-content: center;  /* горизонтально */
+
+    padding: 0 0.5rem;
+}
+
