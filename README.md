@@ -23,29 +23,36 @@ Currently, Freediary allows you to:
 
 1. **Clone the repository**
 
-git clone https://github.com/yourusername/freediary.git
-cd freediary
+```
+$ git clone https://github.com/yourusername/freediary.git
+$ cd freediary
+```
 
 2. **Create a virtual environment**
-
-python -m venv venv
-source venv/bin/activate      # On Windows: venv\Scripts\activate
+```
+$ python -m venv venv
+$ source venv/bin/activate      # On Windows: venv\Scripts\activate
+```
 
 3. **Install dependencies**
-
-pip install -r requirements.txt
-
+```
+$ pip install -r requirements.txt
+```
 
 4. **Initialize the database**
 
+```
 from app import db
 db.create_all()
+```
 
 5. **Run the Flask app**
 
+```
 export FLASK_APP=run.py
 export FLASK_ENV=development
 flask run
+```
 
 6. Your app should now be running at http://127.0.0.1:5000
 
@@ -55,23 +62,21 @@ flask run
 
 Freediary is still a work-in-progress. Planned improvements include:
 
-*User authentication: adding login, account, user-specific trainings*
+-User authentication: adding login, account, user-specific trainings
 
-*Better structure and scalability: Refactor routes, directories, database tables*
+-Better structure and scalability: Refactor routes, directories, database tables
 
-*Add tests using Pytest*
+-Add tests using Pytest
 
-*Telegram bot integration*
+-Telegram bot integration
 
-*More training options and exercises: Extend pool, gym, and depth exercises*
+-More training options and exercises: Extend pool, gym, and depth exercises
 
-*Analytics & stats: Track performance and progress, statistics page*
+-Analytics & stats: Track performance and progress, statistics page
 
-*Better UI and design*
+-Better UI and design
 
-*Custom training types & exercises: Users can add their own*
-
-*Training calendar and plan, reminders*
+-Training calendar and plan, reminders
 
 ## Notes
 This project was created primarily as a personal tool and Flask practice.
