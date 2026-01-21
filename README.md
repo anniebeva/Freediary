@@ -1,11 +1,11 @@
-# Freediary
+# 🌊 Freediary
 
 Freediary is a personal project built with Flask, inspired by my interest in freediving. 
 It is designed as a personal tool for tracking trainings and exercises, and also serves as practice for building web applications with Flask.
 
 ---
 
-## Features
+## 🚀 Features
 
 Currently, Freediary allows you to:
 
@@ -19,7 +19,7 @@ Currently, Freediary allows you to:
 
 ---
 
-## Installation & Setup
+## ⚙️ Installation & Setup
 
 1. **Clone the repository**
 
@@ -46,7 +46,7 @@ from app import db
 db.create_all()
 ```
 
-5. **Run the Flask app**
+5. ** ▶️ Run the Flask app**
 
 ```
 export FLASK_APP=run.py
@@ -56,9 +56,8 @@ flask run
 
 6. Your app should now be running at http://127.0.0.1:5000
 
-## Project Structure
 
-## Future Plans and ideas
+## 💡 Future Plans and ideas
 
 Freediary is still a work-in-progress. Planned improvements include:
 
@@ -78,7 +77,7 @@ Freediary is still a work-in-progress. Planned improvements include:
 
 -Training calendar and plan, reminders
 
-## Notes
+## 📌 Notes
 This project was created primarily as a personal tool and Flask practice.
 
 All current functionality is geared toward personal use.
